@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación: Chatbot Inteligente AZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS DE LA PRESENTACIÓN --- */
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #F7931E;
+            --bg-dark: #0a0a0a;
+            --bg-medium: #1a1a2e;
+            --text-light: #F8F9FA;
+            --text-dim: #a0a0a0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 107, 53, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .divider {
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            margin: 30px auto;
+        }
+
+        .preview-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .preview-mockup {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            height: 400px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+        .preview-mockup::before {
+            content: "Vista previa del chatbot integrado";
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .two-column-layout {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .column-text {
+            flex: 1;
+        }
+
+        .column-visual {
+            flex: 0 0 300px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
+        }
+
+        .feature-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 24px;
+        }
+
+        .stats-card {
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .stats-grid div {
+            text-align: center;
+        }
+        .stats-grid .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .stats-grid .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(247, 147, 30, 0.2) 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            border: none;
+            margin: 10px;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.6);
+        }
+        .cta-button-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary-color);
+        }
+        .cta-button-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .two-column-layout { flex-direction: column; }
+            .column-visual { flex: 1; width: 100%; }
+        }
+
+        /* --- ESTILOS DEL CHATBOT (COMPLETO Y FUNCIONAL) --- */
+        :root {
+          --chatbot-primary: #FF6B35;
+          --chatbot-secondary: #F7931E;
+          --chatbot-text-light: #F8F9FA;
+          --chatbot-text-dark: #212529;
+          --chatbot-bg-dark: #121212;
+          --chatbot-bg-light: #FFFFFF;
+          --chatbot-border-radius: 20px;
+          --chatbot-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        #chatbot-container {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 99999;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          font-family: 'Poppins', sans-serif;
+          color: var(--chatbot-text-light);
+        }
+
+        #chatbot-toggle {
+          width: 60px;
+          height: 60px;
+          background: linear-gradient(45deg, var(--chatbot-primary), var(--chatbot-secondary));
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+          transition: all 0.3s ease;
+          border: none;
+        }
+
+        #chatbot-toggle:hover {
+          transform: scale(1.1) rotate(10deg);
+          box-shadow: 0 8px 25px rgba(255, 107, 53, 0.8);
+        }
+
+        #chatbot-toggle .icon-open {
+          font-size: 28px;
+          color: white;
+          display: flex !important;
+          transition: transform 0.3s ease;
+        }
+
+        #chatbot-toggle:hover .icon-open {
+          transform: rotate(20deg);
+        }
+
+        #chatbot-toggle .icon-close {
+          display: none;
+          font-size: 28px;
+          color: white;
+          transition: transform 0.3s ease;
+        }
+
+        #chatbot-toggle:hover .icon-close {
+          transform: rotate(90deg);
+        }
+
+        #chatbot-window {
+          width: 90vw;
+          max-width: 420px;
+          height: 75vh;
+          max-height: 700px;
+          background: rgba(18, 18, 18, 0.95);
+          backdrop-filter: blur(25px) saturate(180%);
+          -webkit-backdrop-filter: blur(25px) saturate(180%);
+          border: 1px solid rgba(255, 107, 53, 0.2);
+          border-radius: var(--chatbot-border-radius);
+          box-shadow: var(--chatbot-shadow);
+          display: none;
+          flex-direction: column;
+          overflow: hidden;
+          margin-bottom: 1.2rem;
+          transform-origin: bottom right;
+          animation: slideInUp-chat 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          transition: all 0.3s ease;
+        }
+
+        #chatbot-window.expanded {
+          width: 95vw;
+          height: 90vh;
+          max-width: 1200px;
+          max-height: 90vh;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          margin-bottom: 0;
+        }
+
+        #chatbot-window.active {
+          display: flex;
+        }
+
+        @keyframes slideInUp-chat {
+          from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        #chatbot-header {
+          padding: 1.2rem 1.5rem;
+          background: rgba(255, 107, 53, 0.1);
+          border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        #chatbot-header .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: linear-gradient(45deg, var(--chatbot-primary), var(--chatbot-secondary));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          overflow: hidden;
+          border: 2px solid rgba(255, 107, 53, 0.4);
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+        }
+        #chatbot-header .avatar:hover {
+          transform: scale(1.1) rotate(5deg);
+          border-color: rgba(255, 107, 53, 0.7);
+        }
+        #chatbot-header .avatar img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        #chatbot-header .bot-info h4 {
+          margin: 0;
+          color: var(--chatbot-text-light);
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+
+        #chatbot-header .bot-info p {
+          margin: 0;
+          font-size: 0.85rem;
+          color: var(--chatbot-secondary);
+          opacity: 0.9;
+          font-weight: 500;
+        }
+
+        #chatbot-header .header-buttons {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        #chatbot-theme-toggle,
+        #chatbot-expand-toggle {
+            background: none;
+            border: none;
+            color: var(--chatbot-text-light);
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        #chatbot-theme-toggle:hover,
+        #chatbot-expand-toggle:hover {
+            transform: scale(1.15);
+            color: var(--chatbot-primary);
+        }
+
+        #chatbot-messages {
+          flex-grow: 1;
+          padding: 1.5rem;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        #chatbot-messages::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        #chatbot-messages::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        #chatbot-messages::-webkit-scrollbar-thumb {
+          background-color: rgba(255, 107, 53, 0.6);
+          border-radius: 10px;
+        }
+
+        .chat-message {
+          padding: 12px 18px;
+          border-radius: 18px;
+          max-width: 85%;
+          line-height: 1.5;
+          animation: message-in 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          font-size: 0.95rem;
+          word-wrap: break-word;
+        }
+
+        @keyframes message-in {
+          from {
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        .bot-message {
+          background: #1c1c1e;
+          align-self: flex-start;
+          border-bottom-left-radius: 5px;
+          color: var(--chatbot-text-light);
+        }
+
+        .user-message {
+          background: linear-gradient(45deg, var(--chatbot-primary), var(--chatbot-secondary));
+          align-self: flex-end;
+          border-bottom-right-radius: 5px;
+          color: white;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #9E9E9E;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: typing 1.4s infinite both;
+        }
+
+        .typing-indicator span:nth-child(1) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.4s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes typing {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.5; }
+        }
+
+        .chat-message .options {
+          margin-top: 1rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .chat-message .option-button {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 107, 53, 0.5);
+          color: var(--chatbot-text-light);
+          padding: 10px 15px;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+
+        .chat-message .option-button:hover {
+          background: var(--chatbot-primary);
+          color: white;
+          transform: translateY(-3px) scale(1.02);
+          box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+          border-color: var(--chatbot-primary);
+        }
+
+        #chatbot-input-form {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem 1rem;
+          border-top: 1px solid rgba(255, 107, 53, 0.2);
+          background: rgba(18, 18, 18, 0.9);
+        }
+
+        #chatbot-input {
+          flex-grow: 1;
+          padding: 10px 18px;
+          background: #2C2C2E;
+          border: 1px solid transparent;
+          border-radius: 20px;
+          color: var(--chatbot-text-light);
+          font-size: 0.95rem;
+          transition: all 0.3s ease;
+        }
+
+        #chatbot-input:focus {
+          outline: none;
+          border-color: var(--chatbot-primary);
+          box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);
+        }
+
+        #chatbot-send {
+          width: 42px;
+          height: 42px;
+          border: none;
+          background: linear-gradient(45deg, var(--chatbot-primary), var(--chatbot-secondary));
+          border-radius: 50%;
+          color: white;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        #chatbot-send svg {
+          transition: transform 0.3s ease;
+        }
+
+        #chatbot-send:hover {
+          transform: scale(1.1);
+          box-shadow: 0 6px 15px rgba(255, 107, 53, 0.6);
+        }
+
+        #chatbot-send:hover svg {
+          transform: rotate(45deg);
+        }
+
+        #chatbot-send:active {
+          transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            #chatbot-window {
+                width: 100vw;
+                height: 100%;
+                max-height: 100%;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+            }
+            #chatbot-toggle {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="presentation-container">
+        <header>
+            <h1>Chatbot Inteligente AZ</h1>
+            <p class="subtitle">El futuro de la atención al cliente digital</p>
+            <div class="divider"></div>
+        </header>
+
+        <section class="preview-section">
+            <div class="preview-mockup"></div>
+        </section>
+
+        <section id="que-es">
+            <h2>¿Qué es este chatbot?</h2>
+            <div class="two-column-layout">
+                <div class="column-text">
+                    <p>AZ es un asistente virtual inteligente desarrollado con tecnología de vanguardia, diseñado para transformar la experiencia de tus clientes en tu sitio web. Este chatbot ofrece respuestas precisas e inmediatas, mejorando la satisfacción del cliente y optimizando tus recursos de atención.</p>
+                    <p>Su integración es sencilla y compatible con cualquier plataforma web. Con solo unas líneas de código, tu sitio web contará con un asistente virtual profesional que representa tu marca.</p>
+                </div>
+                <div class="column-visual">
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon">🤖</div>
+                            <div>
+                                <h3>Tecnología IA</h3>
+                                <p>Respuestas inteligentes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon">🔧</div>
+                            <div>
+                                <h3>Integración sencilla</h3>
+                                <p>Compatible con cualquier web</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-header">
+                            <div class="feature-icon">📊</div>
+                            <div>
+                                <h3>Análisis de datos</h3>
+                                <p>Insights de clientes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="caracteristicas">
+            <h2>Características principales</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Personalización total</h3>
+                    <p>Adapta el chatbot con tu logo, colores corporativos y tono de comunicación.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌓</div>
+                    <h3>Modo oscuro y claro</h3>
+                    <p>Ofrece a tus usuarios la opción de elegir según sus preferencias.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Botón flotante animado</h3>
+                    <p>Captura la atención de tus visitantes con animaciones sutiles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Menú interactivo</h3>
+                    <p>Guía a tus clientes a través de opciones predefinidas de forma intuitiva.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Diseño responsivo</h3>
+                    <p>Funciona perfectamente en cualquier dispositivo, móviles y escritorio.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Integración con redes</h3>
+                    <p>Conecta directamente con WhatsApp, correo y otras plataformas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios">
+            <h2>Beneficios para tu negocio</h2>
+            <div class="two-column-layout">
+                <div class="column-text">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏰</div>
+                        <div>
+                            <h3>Atención 24/7 sin interrupciones</h3>
+                            <p>Tu chatbot nunca descansa, atendiendo consultas en cualquier momento del día.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div>
+                            <h3>Incrementa conversiones y ventas</h3>
+                            <p>Responde dudas al instante y guía a los clientes en el proceso de compra.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💡</div>
+                        <div>
+                            <h3>Responde preguntas frecuentes</h3>
+                            <p>Automatiza respuestas y libera tiempo para que tu equipo se enfoque en tareas complejas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-visual">
+                    <div class="stats-card">
+                        <h3>Resultados comprobados</h3>
+                        <div class="stats-grid">
+                            <div>
+                                <div class="number">67%</div>
+                                <div class="label">Más conversiones</div>
+                            </div>
+                            <div>
+                                <div class="number">40%</div>
+                                <div class="label">Reducción en costos</div>
+                            </div>
+                        </div>
+                        <div class="stats-grid">
+                            <div>
+                                <div class="number">24/7</div>
+                                <div class="label">Disponibilidad</div>
+                            </div>
+                            <div>
+                                <div class="number">3x</div>
+                                <div class="label">Más engagement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personalizacion">
+            <h2>Personalización para empresas</h2>
+            <div class="two-column-layout">
+                <div class="column-text">
+                    <p>Cada negocio es único, y tu chatbot debe reflejarlo. Adaptamos completamente el asistente virtual para que represente la identidad de tu marca y comunique como lo haría tu equipo.</p>
+                    <div class="feature-card">
+                        <h3>Elementos personalizables</h3>
+                        <ul>
+                            <li>Logo y colores corporativos</li>
+                            <li>Nombre del asistente virtual</li>
+                            <li>Tono y estilo de comunicación</li>
+                            <li>Datos de contacto (WhatsApp, email, redes)</li>
+                            <li>Flujos de conversación específicos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column-visual">
+                    <div class="preview-mockup" style="height: 450px;">
+                        <p style="text-align: center; padding: 20px;">Tu marca, tu estilo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>¿Listo para transformar tu atención al cliente?</h2>
+            <p>Disponible para instalar en tu página web con tu logo, colores y datos. Eleva la experiencia de tus clientes y potencia tus resultados hoy mismo.</p>
+        </section>
+
+        <footer>
+            <p>© 2024 AZ InnovationX. Todos los derechos reservados.</p>
+        </footer>
+    </main>
+
+    <!-- Chatbot HTML Structure -->
+    <div id="chatbot-container">
+        <div id="chatbot-window">
+            <div id="chatbot-header">
+                <div class="avatar">
+                    <img src="https://i.ibb.co/cSCSjsyS/11184177.gif" alt="Avatar AZ" loading="lazy">
+                </div>
+                <div class="bot-info">
+                    <h4>Az Asistente Virtual</h4>
+                    <p>En línea</p>
+                </div>
+                <div class="header-buttons">
+                    <button id="chatbot-theme-toggle" title="Cambiar Tema" aria-label="Cambiar Tema">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sun">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    <button id="chatbot-expand-toggle" title="Expandir/Minimizar" aria-label="Expandir o minimizar el chat">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-expand">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="chatbot-messages" role="log" aria-live="polite"></div>
+            <form id="chatbot-input-form" aria-label="Formulario de entrada de chat">
+                <input type="text" id="chatbot-input" placeholder="Escribe un mensaje..." autocomplete="off" aria-label="Mensaje de entrada">
+                <button type="submit" id="chatbot-send" aria-label="Enviar mensaje">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <button id="chatbot-toggle">
+            <span class="icon-open">🤖</span>
+            <span class="icon-close">✕</span>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- LÓGICA COMPLETA DEL CHATBOT ---
+            const knowledgeBase = {
+                saludo: {
+                    message: [
+                        "¡Qué padre que estás aquí! Soy AZ, tu asistente virtual de Az InnovationX. Estoy listo para ayudarte a convertir tu idea en una solución digital. ¿En qué te puedo ayudar?",
+                        "¡Hola! Soy AZ, de Az InnovationX. ¿Listo para darle vida a tu proyecto digital? Dime cómo puedo asistirte hoy.",
+                        "¡Bienvenido a Az InnovationX! Soy AZ, tu guía en el mundo digital. ¿Qué te trae por aquí?"
+                    ],
+                    options: [{
+                        text: "Nuestros Servicios",
+                        key: "servicios_menu"
+                    }, {
+                        text: "Presencia en Internet",
+                        key: "presencia_internet"
+                    }, {
+                        text: "Suscríbete",
+                        key: "suscribete"
+                    }, {
+                        text: "Nuestra Ubicación",
+                        key: "ubicacion"
+                    }, {
+                        text: "Tips de Ciberseguridad",
+                        key: "ciberseguridad"
+                    }, {
+                        text: "Métodos de Pago",
+                        key: "payment_info"
+                    }, {
+                        text: "Preguntas Frecuentes (FAQ)",
+                        key: "faq_menu"
+                    }, {
+                        text: "Contacto y Redes Sociales",
+                        key: "contacto"
+                    }]
+                },
+                presencia_internet: {
+                    message: [
+                        "¡Excelente pregunta! Tener presencia en internet es clave. Te recomiendo ver el video que está al principio de nuestra página para que veas todo el potencial. Una buena presencia online te permite llegar a más clientes, construir credibilidad y abrir nuevos canales de venta 24/7. ¿Te gustaría que te contáramos cómo podemos ayudarte a lograrlo?",
+                        "¡Me alegra que preguntes por la presencia en línea! Es fundamental en el mundo de hoy. Un sitio web profesional es tu mejor vendedor, trabajando 24/7. ¿Quieres saber cómo podemos construir el tuyo?"
+                    ],
+                    options: [{
+                        text: "Ver video en pagina web",
+                        url: "https://az-innovation-x.vercel.app/"
+                    }, {
+                        text: "Sí, cuéntame más",
+                        key: "servicio_web"
+                    }, {
+                        text: "No, gracias",
+                        key: "saludo"
+                    }]
+                },
+                ciberseguridad: {
+                    message: [
+                        "La ciberseguridad es súper importante. No se trata solo de tecnología, sino de proteger el corazón de tu negocio: tus datos y la confianza de tus clientes. Una buena estrategia de seguridad evita pérdidas económicas y de reputación. ¿Quieres algunos consejos básicos para empezar?",
+                        "Proteger tu negocio digital es crucial. La ciberseguridad es tu primera línea de defensa contra amenazas que pueden costar caro. ¿Te gustaría conocer algunos tips para fortalecer tu seguridad?"
+                    ],
+                    options: [{
+                        text: "Sí, dame consejos",
+                        key: "consejos_ciberseguridad"
+                    }, {
+                        text: "Ver servicios de seguridad",
+                        key: "servicio_seguridad"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }]
+                },
+                consejos_ciberseguridad: {
+                    message: "¡Claro! Aquí van 3 consejos clave:<br>" +
+                        "<ul>" +
+                        "<li><strong>Contraseñas Fuertes:</strong> Usa combinaciones largas de letras, números y símbolos. ¡No uses '123456'!</li>" +
+                        "<li><strong>Autenticación de Dos Pasos (2FA):</strong> Actívala siempre que puedas. Es una capa extra de seguridad.</li>" +
+                        "<li><strong>Mantén todo actualizado:</strong> Tu software, antivirus y aplicaciones deben tener siempre la última versión para protegerte de vulnerabilidades.</li>" +
+                        "</ul>" +
+                        "<p>Proteger tu negocio es más fácil de lo que parece. ¿Te podemos ayudar con algo más?",
+                    options: [{
+                        text: "Ver servicios de seguridad",
+                        key: "servicio_seguridad"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }]
+                },
+                creator_info: {
+                    message: "Fui creado por Az InnovationX, desarrollado por Evaristo San Juan Azuara, un emprendedor y desarrollador apasionado por la innovación tecnológica y la creación de soluciones digitales inteligentes."
+                },
+                suscribete: {
+                    message: "¡Qué bueno que te interesa! Suscríbete para no perderte ninguna de nuestras innovaciones, ofertas especiales y contenido exclusivo. ¡Es la mejor forma de estar al día con el futuro de la tecnología!",
+                    options: [{
+                        text: "¡Claro, me suscribo!",
+                        url: "https://docs.google.com/forms/d/e/1FAIpQLSci7AEJ6vcJBIUrjxHMPNdcmrT1g4GcYx0DzMTd5CrM4nwo1A/viewform?usp=header"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }]
+                },
+                ubicacion: {
+                    message: "Nos encontramos en Estado de Mexico Huixquilucan. ¡Nos encantaría que nos dejaras un comentario en nuestra ubicación de Google Maps! Tu feedback nos ayuda a mejorar.",
+                    options: [{
+                        text: "Dejar un comentario",
+                        url: "https://maps.app.goo.gl/VrvD1Z7wKA4YrFU1A"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }]
+                },
+                payment_info: {
+                    message: "Ofrecemos opciones de pago seguras a través de PayPal, o bien, puedes utilizar tu tarjeta de débito o crédito, con la opción de pagar en meses sin intereses, para completar la transacción de manera confiable y protegida.",
+                    options: [{
+                        text: "Pago con tarjeta de credito o debito",
+                        url: "https://link.clip.mx/azinnovationx"
+                    }, {
+                        text: "Pago Paypal",
+                        url: "https://www.paypal.com/paypalme/EvaristoSan?locale.x=es_XC&country.x=MX"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }]
+                },
+                servicios_menu: {
+                    message: [
+                        "¡Súper! Ofrecemos varias soluciones de alta tecnología. ¿Cuál te interesa para contarte más?",
+                        "Claro, aquí tienes un vistazo de nuestros servicios. ¿Sobre cuál te gustaría profundizar?",
+                        "Perfecto, exploremos nuestras soluciones. ¿Qué área te llama más la atención?"
+                    ],
+                    options: [{
+                        text: "Páginas Web Profesionales",
+                        key: "servicio_web"
+                    }, {
+                        text: "Aplicaciones Móviles",
+                        key: "servicio_app"
+                    }, {
+                        text: "Tiendas Online",
+                        key: "servicio_ecommerce"
+                    }, {
+                        text: "Chatbots Inteligentes",
+                        key: "servicio_chatbot"
+                    }, {
+                        text: "Seguridad Informática",
+                        key: "servicio_seguridad"
+                    }, {
+                        text: "Soluciones Cloud",
+                        key: "servicio_cloud"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }],
+                },
+                faq_menu: {
+                    message: [
+                        "¡Excelente! Aquí tienes los temas de nuestras preguntas más comunes. ¿Sobre qué te gustaría saber?",
+                        "¡Claro! Aquí están las preguntas frecuentes. ¿Qué tema resolvemos hoy?",
+                        "Perfecto, vamos a las FAQs. ¿Qué duda te gustaría aclarar?"
+                    ],
+                    options: [{
+                        text: "Precios y Presupuestos",
+                        key: "faq_precios_menu"
+                    }, {
+                        text: "Sobre el Proceso",
+                        key: "faq_proceso_menu"
+                    }, {
+                        text: "Sobre Tecnología",
+                        key: "faq_tecnologia_menu"
+                    }, {
+                        text: "Soporte Post-Venta",
+                        key: "faq_soporte_menu"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }]
+                },
+                contacto: {
+                    message: "¡Claro! Aquí tienes todas nuestras redes y formas de contacto. ¡Nos encantará saber de ti!",
+                    options: [{
+                        text: "WhatsApp",
+                        url: "https://wa.me/5620042412"
+                    }, {
+                        text: "Facebook",
+                        url: "https://www.facebook.com/AzInnovationX?mibextid=ZbWKwL"
+                    }, {
+                        text: "Instagram",
+                        url: "https://www.instagram.com/azinnovationx?igsh=MWN6Y2I1OWZycHVkOA=="
+                    }, {
+                        text: "TikTok",
+                        url: "https://www.tiktok.com/@innovationx09?_t=ZS-8yJNEWarLPO&_r=1"
+                    }, {
+                        text: "Aplicaciones",
+                        url: "https://sites.google.com/view/tienda-de-aplicaciones/aplicaciones"
+                    }, {
+                        text: "Blog",
+                        url: "https://azinnovationx.blogspot.com/"
+                    }, {
+                        text: "Email",
+                        url: "mailto:soporteseguro98@gmail.com"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }],
+                },
+                ejemplos: {
+                    message: "¡Claro! Puedes ver algunos de nuestros trabajos en nuestra tienda de aplicaciones.",
+                    options: [{
+                        text: "Ir a la Tienda de Aplicaciones",
+                        url: "https://sites.google.com/view/tienda-de-aplicaciones/aplicaciones"
+                    }, {
+                        text: "Volver al inicio",
+                        key: "saludo"
+                    }]
+                },
+                servicio_web: {
+                    message: "Creamos páginas web profesionales con diseños modernos, SEO optimizado e integración de APIs. ¡Perfectas para convertir visitantes en clientes!",
+                    nextContext: 'Páginas Web'
+                },
+                servicio_app: {
+                    message: "Desarrollamos apps para Android y multiplataforma con notificaciones push y un diseño intuitivo para conectar con tu audiencia.",
+                    nextContext: 'Aplicaciones Móviles'
+                },
+                servicio_ecommerce: {
+                    message: "Construimos plataformas de e-commerce robustas con pasarelas de pago seguras y gestión de inventario para que vendas sin parar.",
+                    nextContext: 'Tiendas Online'
+                },
+                servicio_chatbot: {
+                    message: "Automatizamos la atención al cliente 24/7 con IA. ¡Respuestas al instante para no perder ni un cliente!",
+                    nextContext: 'Chatbots Inteligentes'
+                },
+                servicio_seguridad: {
+                    message: "Protegemos tu negocio digital con auditorías y protocolos de ciberseguridad. ¡Tu tranquilidad es nuestra prioridad!",
+                    nextContext: 'Seguridad Informática'
+                },
+                servicio_cloud: {
+                    message: "Migramos y optimizamos tu infraestructura en la nube para darte escalabilidad, alta disponibilidad y backups automáticos.",
+                    nextContext: 'Soluciones Cloud'
+                },
+                faq_precios_menu: {
+                    message: "¡Claro! Hablemos de números. ¿Qué duda tienes sobre nuestros precios?",
+                    options: [{
+                        text: "¿Cuáles son sus tarifas?",
+                        key: "faq_tarifas"
+                    }, {
+                        text: "¿Ofrecen planes de pago?",
+                        key: "faq_planes_pago"
+                    }, {
+                        text: "¿Hay costos ocultos?",
+                        key: "faq_costos_ocultos"
+                    }, {
+                        text: "¿Cuánto cuesta una página web?",
+                        key: "faq_precio_web"
+                    }, {
+                        text: "¿Cuánto cuesta una app móvil?",
+                        key: "faq_precio_app"
+                    }, {
+                        text: "Volver a FAQ",
+                        key: "faq_menu"
+                    }]
+                },
+                faq_proceso_menu: {
+                    message: "¡Perfecto! Nuestro proceso es súper ágil. ¿Qué te gustaría saber?",
+                    options: [{
+                        text: "¿Cómo empezamos?",
+                        key: "faq_proceso_inicio"
+                    }, {
+                        text: "¿Qué necesitan de mí?",
+                        key: "faq_proceso_requisitos"
+                    }, {
+                        text: "¿Puedo ver el progreso?",
+                        key: "faq_proceso_progreso"
+                    }, {
+                        text: "Volver a FAQ",
+                        key: "faq_menu"
+                    }]
+                },
+                faq_tecnologia_menu: {
+                    message: "¡Nos encanta la tecnología! Usamos lo más moderno y eficiente. ¿Qué quieres saber?",
+                    options: [{
+                        text: "¿Qué tecnologías usan?",
+                        key: "faq_tech_stack"
+                    }, {
+                        text: "¿Mis datos están seguros?",
+                        key: "faq_tech_seguridad"
+                    }, {
+                        text: "Volver a FAQ",
+                        key: "faq_menu"
+                    }]
+                },
+                faq_soporte_menu: {
+                    message: "¡Claro! Nuestro compromiso no termina con la entrega. ¿Qué duda tienes sobre el soporte?",
+                    options: [{
+                        text: "¿Ofrecen capacitación?",
+                        key: "faq_soporte_capacitacion"
+                    }, {
+                        text: "¿Qué incluye el soporte?",
+                        key: "faq_soporte_incluye"
+                    }, {
+                        text: "¿Tienen garantía?",
+                        key: "faq_soporte_garantia"
+                    }, {
+                        text: "Volver a FAQ",
+                        key: "faq_menu"
+                    }]
+                },
+                faq_tarifas: {
+                    message: "Nuestros precios varían según el proyecto. Las páginas web básicas inician en $2,000 MXN y las apps móviles desde $6,000 MXN. ¿Te gustaría un presupuesto personalizado?",
+                    options: [{
+                        text: "Sí, por favor",
+                        key: "presupuesto"
+                    }, {
+                        text: "No, gracias",
+                        key: "faq_precios_menu"
+                    }],
+                    nextContext: 'presupuesto_offer'
+                },
+                faq_planes_pago: {
+                    message: "¡Sí! Ofrecemos planes de pago flexibles. Generalmente es 50% al inicio y 50% al finalizar el proyecto. ¡Súper accesible! ¿Te interesa conocer más detalles?",
+                    options: [{
+                        text: "Sí, quiero más detalles",
+                        key: "contacto"
+                    }, {
+                        text: "No, gracias",
+                        key: "faq_precios_menu"
+                    }],
+                    nextContext: 'contact_offer'
+                },
+                faq_costos_ocultos: {
+                    message: "Para nada. Somos 100% transparentes. El presupuesto que te damos incluye todo lo acordado. Los servicios adicionales que pidas después se cobran por separado, pero siempre con tu aprobación."
+                },
+                faq_precio_web: {
+                    message: "Una página web profesional y moderna empieza desde $2,000 MXN. Incluye diseño responsivo, SEO básico y formulario de contacto. ¿Te gustaría un presupuesto personalizado?",
+                    options: [{
+                        text: "Sí, por favor",
+                        key: "presupuesto"
+                    }, {
+                        text: "No, gracias",
+                        key: "faq_precios_menu"
+                    }],
+                    nextContext: 'presupuesto_offer'
+                },
+                faq_precio_app: {
+                    message: "El desarrollo de apps móviles inicia desde $6,000 MXN, dependiendo de qué tan compleja sea. ¿Te gustaría contarme sobre tu idea para darte un número más exacto?",
+                    options: [{
+                        text: "Sí, me gustaría",
+                        key: "presupuesto"
+                    }, {
+                        text: "No, gracias",
+                        key: "faq_precios_menu"
+                    }],
+                    nextContext: 'presupuesto_offer'
+                },
+                faq_proceso_inicio: {
+                    message: "¡Súper fácil! 1) Nos cuentas tu idea, 2) Te damos presupuesto, 3) Firmamos contrato, 4) ¡Empezamos a crear!"
+                },
+                faq_proceso_requisitos: {
+                    message: "Solo necesitamos que nos cuentes tu visión, compartas contenido (textos, imágenes) y que tengas comunicación fluida con nosotros."
+                },
+                faq_proceso_progreso: {
+                    message: "¡Por supuesto! Te enviamos actualizaciones semanales con capturas y avances. Siempre estarás al tanto."
+                },
+                faq_tech_stack: {
+                    message: "Usamos tecnologías modernas: HTML5, CSS3, JavaScript, React, Node.js, Firebase. Siempre lo más actual y eficiente."
+                },
+                faq_tech_seguridad: {
+                    message: "¡Totalmente! Implementamos protocolos de seguridad SSL, encriptación y cumplimos con estándares internacionales de protección de datos."
+                },
+                faq_soporte_capacitacion: {
+                    message: "¡Sí! Incluimos sesión de capacitación para que sepas manejar tu plataforma como un experto."
+                },
+                faq_soporte_incluye: {
+                    message: "Soporte técnico por 30 días, corrección de bugs, y asesoría para dudas básicas sin costo adicional."
+                },
+                faq_soporte_garantia: {
+                    message: "¡Por supuesto! 30 días de garantía total contra defectos de funcionamiento y bugs."
+                },
+                presupuesto: {
+                    message: [
+                        "¡Excelente! Para darte una cotización más precisa, ¿podrías indicarme tu presupuesto aproximado para este proyecto?",
+                        "¡Perfecto! Para ajustar la propuesta a tus necesidades, ¿qué rango de presupuesto tienes en mente?",
+                        "¡Genial! Conocer tu presupuesto nos ayuda a ofrecerte la mejor solución posible. ¿Podrías compartir un aproximado?"
+                    ],
+                    options: [{
+                        text: "Menos de $2,000 MXN",
+                        budget: "0-2000"
+                    }, {
+                        text: "$2,000 - $4,000 MXN",
+                        budget: "2000-4000"
+                    }, {
+                        text: "$4,000 - $6,000 MXN",
+                        budget: "4000-6000"
+                    }, {
+                        text: "Más de $6,000 MXN",
+                        budget: "6000+"
+                    }, {
+                        text: "Prefiero no decirlo",
+                        budget: "nda"
+                    }],
+                    nextContext: 'capture_budget'
+                },
+                human_escalation: {
+                    message: "Entiendo. Para darte una atención más personalizada, te recomiendo hablar directamente con nuestro equipo técnico vía WhatsApp. ¿Quieres que te redirija?",
+                    options: [{
+                        text: "Sí, llevar a WhatsApp",
+                        url: "https://wa.me/5620042412"
+                    }, {
+                        text: "No, gracias",
+                        key: "saludo"
+                    }],
+                    nextContext: 'whatsapp_redirect'
+                },
+                solicitar_nombre: {
+                    message: "¡Perfecto! Para empezar, ¿me podrías decir tu nombre?",
+                    nextContext: 'capturar_nombre'
+                },
+                solicitar_email: {
+                    message: "¡Gracias, {nombre}! Para continuar, te redirigiré al formulario de contacto para que nos des más detalles.",
+                    options: [{
+                        text: "Ir al formulario",
+                        url: "https://solicitudes-az-innovation-x.vercel.app/"
+                    }]
+                },
+            };
+
+            const intents = {
+                greet: ['hola', 'buenos dias', 'buenas tardes', 'que tal', 'hey', 'saludos'],
+                request_service_info: ['servicio', 'información', 'que haces', 'ayuda', 'productos', 'soluciones', 'ofrecen'],
+                request_quote: ['precio', 'costo', 'cuánto', 'presupuesto', 'tarifa', 'cotización', 'cotizar', 'valor'],
+                request_payment: ['pagar', 'pago', 'métodos de pago', 'cómo pago', 'cuenta bancaria', 'transferencia', 'opciones de pago'],
+                request_contact: ['redes', 'social', 'síguelos', 'facebook', 'instagram', 'tiktok', 'seguir', 'contacto', 'llamar', 'email', 'correo', 'hablar con alguien'],
+                request_examples: ['ejemplos', 'portfolio', 'trabajos', 'proyectos anteriores', 'muestra'],
+                request_process: ['tiempo', 'cuándo', 'plazos', 'entrega', 'duración', 'proceso'],
+                request_support: ['soporte', 'mantenimiento', 'garantía', 'actualizaciones'],
+                frustration: ['no funciona', 'no sirve', 'frustrado', 'agente', 'humano', 'persona', 'no entiendo'],
+                request_online_presence_info: ['presencia', 'internet', 'online', 'importancia de estar en linea', 'visibilidad'],
+                request_cybersecurity_info: ['ciberseguridad', 'seguridad', 'proteger', 'riesgos', 'hackers', 'virus'],
+                request_creator_info: ['quien te creo', 'quién te creó', 'creador', 'desarrollador', 'quien te hizo', 'quién te hizo', 'quien te programo', 'quién te programó'],
+            };
+
+            const affirmativeAnswers = ['si', 'sí', 'yes', 'claro', 'ok', 'está bien', 'esta bien', 'dale', 'va', 'por supuesto', 'acepto', 'afirmativo', 'de acuerdo'];
+            const negativeAnswers = ['no', 'no gracias', 'cancelar', 'ahora no'];
+
+            const UIController = {
+                domElements: {
+                    chatbotToggle: document.getElementById('chatbot-toggle'),
+                    chatbotWindow: document.getElementById('chatbot-window'),
+                    iconOpen: document.querySelector('#chatbot-toggle .icon-open'),
+                    iconClose: document.querySelector('#chatbot-toggle .icon-close'),
+                    messagesContainer: document.getElementById('chatbot-messages'),
+                    inputForm: document.getElementById('chatbot-input-form'),
+                    inputField: document.getElementById('chatbot-input'),
+                    expandToggle: document.getElementById('chatbot-expand-toggle'),
+                    themeToggle: document.getElementById('chatbot-theme-toggle'),
+                },
+                init() {
+                    this.domElements.chatbotToggle.addEventListener('click', this.toggleChatbot.bind(this));
+                    this.domElements.expandToggle.addEventListener('click', this.toggleExpand.bind(this));
+                    this.domElements.themeToggle.addEventListener('click', this.toggleTheme.bind(this));
+                    this.domElements.inputForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const userInput = this.domElements.inputField.value.trim();
+                        if (userInput) {
+                            ConversationEngine.handleInput(userInput);
+                        }
+                    });
+                    this.domElements.messagesContainer.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('option-button')) {
+                            ConversationEngine.handleOptionClick(e.target);
+                        }
+                    });
+                    this.loadTheme();
+                },
+                toggleChatbot() {
+                    const isActive = this.domElements.chatbotWindow.classList.toggle('active');
+                    this.domElements.iconOpen.style.display = isActive ? 'none' : 'block';
+                    this.domElements.iconClose.style.display = isActive ? 'block' : 'none';
+
+                    if (isActive && this.domElements.messagesContainer.children.length === 0) {
+                        ConversationEngine.startConversation();
+                    }
+                },
+                toggleExpand() {
+                    this.domElements.chatbotWindow.classList.toggle('expanded');
+                    const icon = this.domElements.expandToggle.querySelector('svg');
+                    if (this.domElements.chatbotWindow.classList.contains('expanded')) {
+                        icon.innerHTML = '<path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path>';
+                    } else {
+                        icon.innerHTML = '<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>';
+                    }
+                },
+                toggleTheme() {
+                    document.body.classList.toggle('light-mode');
+                    localStorage.setItem('chatbot-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+                    const icon = this.domElements.themeToggle.querySelector('svg');
+                    if (document.body.classList.contains('light-mode')) {
+                        icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>'; // Moon icon
+                    } else {
+                        icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>'; // Sun icon
+                    }
+                },
+                loadTheme() {
+                    const theme = localStorage.getItem('chatbot-theme');
+                    if (theme === 'light') {
+                        document.body.classList.add('light-mode');
+                        // Update icon without calling toggleTheme to avoid loop
+                        const icon = this.domElements.themeToggle.querySelector('svg');
+                        icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+                    }
+                },
+                showUserMessage(message) {
+                    const userMessageElement = document.createElement('div');
+                    userMessageElement.classList.add('chat-message', 'user-message');
+                    userMessageElement.textContent = message;
+                    this.domElements.messagesContainer.appendChild(userMessageElement);
+                    this.scrollToBottom();
+                },
+                showBotMessage(response, key) {
+                    const botMessageElement = document.createElement('div');
+                    botMessageElement.classList.add('chat-message', 'bot-message');
+
+                    let message = Array.isArray(response.message) ? response.message[Math.floor(Math.random() * response.message.length)] : response.message;
+
+                    if (key && key !== 'saludo' && !response.options && !message.includes('?')) {
+                        let followUp = "¿Hay algo más en lo que pueda ayudarte?";
+                        if (StateController.get('currentTopic')) {
+                            followUp = `¿Tienes alguna otra pregunta sobre ${StateController.get('currentTopic')}, o te gustaría explorar otro servicio?`;
+                        }
+                        message += `<br><br><em>${followUp}</em>`;
+                    }
+
+                    const messageText = document.createElement('p');
+                    messageText.innerHTML = message;
+                    botMessageElement.appendChild(messageText);
+
+                    if (response.options) {
+                        const optionsContainer = document.createElement('div');
+                        optionsContainer.classList.add('options');
+                        response.options.forEach(option => {
+                            const button = document.createElement('button');
+                            button.classList.add('option-button');
+                            button.textContent = option.text;
+                            if (option.key) button.dataset.key = option.key;
+                            if (option.url) button.dataset.url = option.url;
+                            if (option.budget) button.dataset.budget = option.budget;
+                            optionsContainer.appendChild(button);
+                        });
+                        botMessageElement.appendChild(optionsContainer);
+                    }
+
+                    this.domElements.messagesContainer.appendChild(botMessageElement);
+                    this.scrollToBottom();
+                },
+                showTypingIndicator() {
+                    const typingIndicator = document.createElement('div');
+                    typingIndicator.classList.add('chat-message', 'bot-message', 'typing-indicator');
+                    typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+                    this.domElements.messagesContainer.appendChild(typingIndicator);
+                    this.scrollToBottom();
+                },
+                hideTypingIndicator() {
+                    const typingIndicator = this.domElements.messagesContainer.querySelector('.typing-indicator');
+                    if (typingIndicator) {
+                        this.domElements.messagesContainer.removeChild(typingIndicator);
+                    }
+                },
+                scrollToBottom() {
+                    this.domElements.messagesContainer.scrollTop = this.domElements.messagesContainer.scrollHeight;
+                },
+                toggleInput(disabled) {
+                    this.domElements.inputField.disabled = disabled;
+                    if (!disabled) {
+                        this.domElements.inputField.focus();
+                    }
+                }
+            };
+
+            const StateController = {
+                state: {
+                    lastBotQuestionKey: null,
+                    currentTopic: null,
+                    mentionedServices: [],
+                    budgetRange: null,
+                    userFrustration: 0,
+                    history: [],
+                    suggestedQuote: false,
+                    suggestedWebAppAndEcomm: false,
+                    suggestedPortfolio: false,
+                    misunderstandingCounter: 0,
+                },
+                get(key) {
+                    return this.state[key];
+                },
+                set(key, value) {
+                    this.state[key] = value;
+                },
+                reset() {
+                    this.state.misunderstandingCounter = 0;
+                    this.state.userFrustration = 0;
+                },
+                increment(key) {
+                    this.state[key]++;
+                },
+                pushToHistory(item) {
+                    this.state.history.push(item);
+                    if (this.state.history.length > 10) {
+                        this.state.history.shift();
+                    }
+                }
+            };
+
+            const ConversationEngine = {
+                init() {
+                    UIController.init();
+                },
+                startConversation() {
+                    UIController.showBotMessage(knowledgeBase.saludo, 'saludo');
+                },
+                handleInput(input) {
+                    UIController.showUserMessage(input);
+                    StateController.pushToHistory(input.toLowerCase().trim());
+                    UIController.toggleInput(true);
+                    UIController.showTypingIndicator();
+
+                    setTimeout(() => {
+                        UIController.hideTypingIndicator();
+                        let response;
+                        let responseKey = null;
+                        const lowerCaseInput = input.toLowerCase().trim();
+                        const lastBotQuestionKey = StateController.get('lastBotQuestionKey');
+
+                        if (lastBotQuestionKey === 'capturar_nombre') {
+                            StateController.set('userName', input.trim());
+                            responseKey = 'solicitar_email';
+                            const responseTemplate = JSON.parse(JSON.stringify(knowledgeBase[responseKey]));
+                            responseTemplate.message = responseTemplate.message.replace('{nombre}', StateController.get('userName'));
+                            response = responseTemplate;
+                        } else if (lastBotQuestionKey === 'capturar_email') {
+                            if (input.includes('@') && input.includes('.')) {
+                                StateController.set('userEmail', input.trim());
+                                responseKey = 'agradecimiento_cotizacion';
+                                const responseTemplate = JSON.parse(JSON.stringify(knowledgeBase[responseKey]));
+                                responseTemplate.message = responseTemplate.message.replace('{nombre}', StateController.get('userName'));
+                                response = responseTemplate;
+                            } else {
+                                responseKey = 'solicitar_email';
+                                response = {
+                                    message: "Lo siento, ese correo no parece válido. ¿Podrías intentarlo de nuevo?",
+                                    nextContext: 'capturar_email'
+                                };
+                            }
+                        }
+
+                        if (!response && lastBotQuestionKey) {
+                            if (affirmativeAnswers.includes(lowerCaseInput)) {
+                                switch (lastBotQuestionKey) {
+                                    case 'presupuesto_offer':
+                                        responseKey = 'presupuesto';
+                                        break;
+                                    case 'contact_offer':
+                                        responseKey = 'contacto';
+                                        break;
+                                    case 'whatsapp_redirect':
+                                        window.open("https://wa.me/5620042412", '_blank');
+                                        response = {
+                                            message: "¡Perfecto! Te estoy redirigiendo a WhatsApp..."
+                                        };
+                                        break;
+                                }
+                            } else if (negativeAnswers.includes(lowerCaseInput)) {
+                                responseKey = "saludo";
+                            }
+                        }
+
+                        if (!response) {
+                            for (const intent in intents) {
+                                if (intents[intent].some(kw => lowerCaseInput.includes(kw))) {
+                                    switch (intent) {
+                                        case 'request_payment':
+                                            responseKey = 'payment_info';
+                                            break;
+                                        case 'request_quote':
+                                            responseKey = 'presupuesto';
+                                            break;
+                                        case 'request_contact':
+                                            responseKey = 'contacto';
+                                            break;
+                                        case 'request_examples':
+                                            responseKey = 'ejemplos';
+                                            break;
+                                        case 'frustration':
+                                            responseKey = 'human_escalation';
+                                            break;
+                                        case 'request_service_info':
+                                            responseKey = 'servicios_menu';
+                                            break;
+                                        case 'greet':
+                                            responseKey = 'saludo';
+                                            break;
+                                        case 'request_online_presence_info':
+                                            responseKey = 'presencia_internet';
+                                            break;
+                                        case 'request_cybersecurity_info':
+                                            responseKey = 'ciberseguridad';
+                                            break;
+                                        case 'request_creator_info':
+                                            responseKey = 'creator_info';
+                                            break;
+                                    }
+                                    if (responseKey) break;
+                                }
+                            }
+                        }
+
+                        const history = StateController.get('history');
+                        if (!response && !responseKey && history.length > 2) {
+                            const lastThree = history.slice(-3);
+                            if (lastThree.every(val => val === lastThree[0])) {
+                                response = JSON.parse(JSON.stringify(knowledgeBase['human_escalation']));
+                                response.message = "Parece que no nos estamos entendiendo. " + response.message;
+                                StateController.set('history', []);
+                            }
+                        }
+
+                        if (responseKey && !response) {
+                            response = knowledgeBase[responseKey];
+                            StateController.reset();
+                        }
+
+                        if (!response) {
+                            StateController.increment('misunderstandingCounter');
+                            StateController.increment('userFrustration');
+                            if (StateController.get('misunderstandingCounter') >= 2 || StateController.get('userFrustration') >= 3) {
+                                response = knowledgeBase['human_escalation'];
+                                StateController.set('misunderstandingCounter', 0);
+                            } else {
+                                response = {
+                                    message: "No he entendido muy bien. Puedes intentar con otras palabras o elegir una de las opciones.",
+                                    options: knowledgeBase.saludo.options
+                                };
+                            }
+                        }
+
+                        const proactiveSuggestion = this.getProactiveSuggestion();
+                        if (proactiveSuggestion && response && !response.options) {
+                            response.message += `<br><br><div style="border-left: 3px solid var(--chatbot-primary); padding-left: 10px; margin-top: 10px; opacity: 0.9;"><em>Sugerencia: ${proactiveSuggestion}</em></div>`;
+                        }
+
+                        if (response) {
+                            UIController.showBotMessage(response, responseKey);
+                            StateController.set('lastBotQuestionKey', response.nextContext || responseKey);
+                            if (response.nextContext && !StateController.get('mentionedServices').includes(response.nextContext)) {
+                                StateController.get('mentionedServices').push(response.nextContext);
+                                StateController.set('currentTopic', response.nextContext);
+                            }
+                        }
+
+                        UIController.toggleInput(false);
+                    }, 800);
+                },
+
+                handleOptionClick(target) {
+                    const key = target.dataset.key;
+                    const url = target.dataset.url;
+                    const budget = target.dataset.budget;
+                    const text = target.textContent;
+
+                    UIController.showUserMessage(text);
+                    StateController.pushToHistory(text.toLowerCase().trim());
+                    UIController.toggleInput(true);
+                    UIController.showTypingIndicator();
+
+                    setTimeout(() => {
+                        UIController.hideTypingIndicator();
+                        if (url) {
+                            window.open(url, '_blank');
+                            this.handleInput(`He seleccionado: ${text}`);
+                        } else if (key) {
+                            const response = knowledgeBase[key];
+                            if (response) {
+                                UIController.showBotMessage(response, key);
+                                StateController.set('lastBotQuestionKey', response.nextContext || key);
+                            }
+                        } else if (budget) {
+                            StateController.set('budgetRange', text);
+                            const response = knowledgeBase['solicitar_nombre'];
+                            UIController.showBotMessage(response, 'solicitar_nombre');
+                            StateController.set('lastBotQuestionKey', response.nextContext);
+                        }
+                        UIController.toggleInput(false);
+                    }, 400);
+                },
+                getProactiveSuggestion() {
+                    const {
+                        currentTopic,
+                        mentionedServices,
+                        history,
+                        suggestedQuote,
+                        suggestedWebAppAndEcomm,
+                        suggestedPortfolio
+                    } = StateController.state;
+
+                    if (!suggestedWebAppAndEcomm && mentionedServices.includes('Páginas Web') && mentionedServices.includes('Tiendas Online')) {
+                        StateController.set('suggestedWebAppAndEcomm', true);
+                        return "Veo que te interesan tanto las páginas web como las tiendas online. ¿Sabías que nuestras tiendas online son sitios web completos con todo lo que necesitas para vender?";
+                    }
+
+                    const askedAboutPrice = history.some(input => intents.request_quote.some(kw => input.includes(kw)));
+                    if (!suggestedQuote && currentTopic && askedAboutPrice) {
+                        StateController.set('suggestedQuote', true);
+                        return `Si quieres, podemos hacer una cotización más detallada para tu proyecto de ${currentTopic} sin ningún compromiso. Solo di "cotizar".`;
+                    }
+
+                    if (currentTopic && history.filter(i => i.toLowerCase().includes(currentTopic.toLowerCase().split(' ')[0])).length > 1) {
+                        if (!suggestedPortfolio) {
+                            StateController.set('suggestedPortfolio', true);
+                            return `Parece que te interesa mucho ${currentTopic}. ¿Te gustaría ver algunos ejemplos de nuestros trabajos en esa área?`;
+                        }
+                    }
+                    return null;
+                }
+            };
+
+            ConversationEngine.init();
+        });
+    </script>
+</body>
+</html>
