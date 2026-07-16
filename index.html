@@ -340,7 +340,6 @@
           display: none;
           flex-direction: column;
           overflow: hidden;
-          margin-bottom: 1.2rem;
           transform-origin: bottom right;
           animation: slideInUp-chat 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
           transition: all 0.3s ease;
@@ -621,11 +620,6 @@
                 bottom: 0;
                 right: 0;
                 border-radius: 0;
-                margin-bottom: 0;
-            }
-            #chatbot-toggle {
-                bottom: 10px;
-                right: 10px;
             }
         }
 
@@ -754,8 +748,8 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">✨</div>
-                    <h3>Botón flotante animado</h3>
-                    <p>Captura la atención de tus visitantes con animaciones sutiles.</p>
+                    <h3>Chatbot interactivo</h3>
+                    <p>Captura la atención de tus visitantes con una experiencia conversacional fluida.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💬</div>
@@ -914,7 +908,7 @@
 
     <!-- Chatbot HTML Structure -->
     <div id="chatbot-container">
-        <div id="chatbot-window">
+        <div id="chatbot-window" class="active">
             <div id="chatbot-header">
                 <div class="avatar">
                     <img src="https://i.ibb.co/cSCSjsyS/11184177.gif" alt="Avatar AZ" loading="lazy">
@@ -955,10 +949,6 @@
                 </button>
             </form>
         </div>
-        <button id="chatbot-toggle">
-            <span class="icon-open">🤖</span>
-            <span class="icon-close">✕</span>
-        </button>
     </div>
 
     <script>
@@ -1401,10 +1391,7 @@
 
             const UIController = {
                 domElements: {
-                    chatbotToggle: document.getElementById('chatbot-toggle'),
                     chatbotWindow: document.getElementById('chatbot-window'),
-                    iconOpen: document.querySelector('#chatbot-toggle .icon-open'),
-                    iconClose: document.querySelector('#chatbot-toggle .icon-close'),
                     messagesContainer: document.getElementById('chatbot-messages'),
                     inputForm: document.getElementById('chatbot-input-form'),
                     inputField: document.getElementById('chatbot-input'),
@@ -1412,7 +1399,6 @@
                     themeToggle: document.getElementById('chatbot-theme-toggle'),
                 },
                 init() {
-                    this.domElements.chatbotToggle.addEventListener('click', this.toggleChatbot.bind(this));
                     this.domElements.expandToggle.addEventListener('click', this.toggleExpand.bind(this));
                     this.domElements.themeToggle.addEventListener('click', this.toggleTheme.bind(this));
                     this.domElements.inputForm.addEventListener('submit', (e) => {
@@ -1428,13 +1414,9 @@
                         }
                     });
                     this.loadTheme();
-                },
-                toggleChatbot() {
-                    const isActive = this.domElements.chatbotWindow.classList.toggle('active');
-                    this.domElements.iconOpen.style.display = isActive ? 'none' : 'block';
-                    this.domElements.iconClose.style.display = isActive ? 'block' : 'none';
 
-                    if (isActive && this.domElements.messagesContainer.children.length === 0) {
+                    // Start conversation by default since window is active on load
+                    if (this.domElements.messagesContainer.children.length === 0) {
                         ConversationEngine.startConversation();
                     }
                 },
